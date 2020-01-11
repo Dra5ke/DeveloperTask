@@ -1,0 +1,23 @@
+﻿@model ChemicalsOverview.Controllers.ViewModel.HomeIndexViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div data-ng-controller="ChemicalsController" data-ng-init="init(@Newtonsoft.Json.JsonConvert.SerializeObject(Model.Chemicals))">
+    <div class="row">
+        <div class="col-md-12">
+            <select id="chemDropdown"
+                    data-ng-change="getChemical()"
+                    data-ng-model="chemicalSelect"
+                    data-ng-options="chemical.ProductName for chemical in chemicals">
+                <option></option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <iframe ng-src="{{content}}" data-ng-if="content" style="width: 80%; height:1000px;" />
+        </div>
+    </div>
+</div>
+
